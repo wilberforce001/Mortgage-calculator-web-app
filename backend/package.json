@@ -1,0 +1,21 @@
+{
+  "name": "mortgage-calculator-web-app",
+  "version": "1.0.0",
+  "description": "Mortgage-Calculator: this is a Web App that can be used to plan out mortgages. It helps in the calculation of monthly EMI to avoid confusion and stress while taking out loans.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.13.0"
+  }
+}

@@ -1,14 +1,30 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function Login() {
     // Initialize the states (email and passoword)
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState(''); 
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
     // handleLogin function that gets triggered when the form is submitted
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
+        setError('');
         console.log({ email, password });
+
+        try {
+            const response = await axios.post('http://localhost:5000/login', {
+                email,
+                password,
+            });
+
+            // Handle successful login
+            console.log(response.data.message);
+        } catch (err) {
+            setError(err.response.data.message || 'Login failed');
+        }
     };
 
     return (
@@ -35,10 +51,15 @@ function Login() {
                         />
                     </div>
                     <button type='submit' className='btn btn-primary w-100'>Login</button>
+                    {error && <p>{error}</p>}
                 </form>
+
+                <p>
+                    Not registered? <Link to="/register">Click here to register</Link>
+                </p>
             </div>
         </div>
-    )
+    );
 
 }
 
